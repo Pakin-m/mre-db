@@ -18,3 +18,19 @@ CREATE TABLE IF NOT EXISTS workspaces (
     name        TEXT NOT NULL,
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+CREATE TABLE IF NOT EXISTS sources (
+    id            BIGSERIAL PRIMARY KEY,
+    workspace_id  BIGINT NOT NULL,     -- FK to workspaces.id (later)
+    title         TEXT NOT NULL,
+    type          TEXT NOT NULL,       -- e.g. 'report', 'article', 'web_page'
+    content       TEXT,                -- optional raw content or full text
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS fragments (
+    id             BIGSERIAL PRIMARY KEY,
+    source_id      BIGINT NOT NULL,    -- FK to sources.id (later)
+    fragment_index INTEGER NOT NULL,   -- position of fragment inside source (1, 2, 3…)
+    text           TEXT NOT NULL
+);
