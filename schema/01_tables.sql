@@ -48,3 +48,11 @@ CREATE TABLE IF NOT EXISTS fragment_concepts (
     concept_id    BIGINT NOT NULL      -- FK to concepts.id (later)
     -- PK and extra constraints will be added in 02_constraints.sql
 );
+
+CREATE TABLE IF NOT EXISTS notes (
+    id            BIGSERIAL PRIMARY KEY,
+    workspace_id  BIGINT NOT NULL,     -- FK to workspaces.id (later)
+    title         TEXT NOT NULL,
+    body          TEXT NOT NULL,
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
