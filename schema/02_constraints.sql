@@ -55,3 +55,25 @@ ALTER TABLE fragment_concepts
 ALTER TABLE fragment_concepts
     ADD CONSTRAINT fragment_concepts_pkey
         PRIMARY KEY (fragment_id, concept_id);
+
+
+-- ===== Uniqueness and validation =====
+
+-- Users: emails and usernames must be unique.
+ALTER TABLE users
+    ADD CONSTRAINT users_email_uniq
+        UNIQUE (email);
+
+ALTER TABLE users
+    ADD CONSTRAINT users_username_uniq
+        UNIQUE (username);
+
+-- Concepts: avoid duplicate concept names within the same workspace.
+ALTER TABLE concepts
+    ADD CONSTRAINT concepts_workspace_name_uniq
+        UNIQUE (workspace_id, name);
+
+-- Fragments: fragment_index must be positive.
+ALTER TABLE fragments
+    ADD CONSTRAINT fragments_fragment_index_positive
+        CHECK (fragment_index > 0);
