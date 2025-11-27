@@ -85,3 +85,54 @@ VALUES
     (3, 'pricing_model', 'How a SaaS product charges customers (tiered, usage-based, etc.).'),
     (3, 'arpu',          'Average revenue per user or account.'),
     (3, 'churn_rate',    'Rate at which customers cancel subscriptions.');
+
+INSERT INTO fragment_concepts (fragment_id, concept_id)
+VALUES
+    -- Workspace 1: customer segments, conversion, AOV, retention, marketing channels
+    (1,  1),  -- GMV growth relates to customer_segments
+    (2,  1),  -- Gen Z fashion growth -> customer_segments
+    (3,  1),  -- explicitly mentions customer segments
+    (4,  2),  -- conversion rate and free shipping
+    (5,  3),  -- premium pricing -> AOV
+    (6,  1),  -- value-conscious customers -> segments
+    (7,  5),  -- IG/TikTok -> marketing channels
+    (8,  3),  -- bundles raise AOV
+    (9,  5),  -- discover brands via TikTok -> channel
+    (10, 2),  -- cart abandonment -> conversion
+    (11, 4),  -- loyalty / community -> retention
+    (12, 4),  -- retention via fast replies and returns
+
+    -- Workspace 3: pricing model, ARPU, churn rate
+    (13, 6),  -- tiered pricing
+    (14, 7),  -- ARPU increasing with add-ons
+    (15, 8),  -- annual contracts reduce churn
+    (16, 8),  -- churn tied to onboarding/support
+    (17, 8),  -- churn spike if no first value
+    (18, 8),  -- churn and low adoption
+    (19, 8),  -- QBRs reduce churn (retention effect) -> churn_rate
+    (20, 6);  -- pricing discounts vs churn
+
+INSERT INTO notes (workspace_id, title, body)
+VALUES
+    (1, 'Gen Z fashion insights',
+     'Key takeaways: high TikTok influence, sensitivity to shipping fees, and strong preference for clear returns.'),
+    (1, 'E-commerce growth summary',
+     'SEA GMV grew 18% YoY. Thailand fashion segment is outperforming overall market.'),
+    (1, 'Skincare positioning ideas',
+     'Consider mid-premium positioning with strong community and educational content.'),
+    (1, 'Marketing channel priorities',
+     'Double down on TikTok creators and IG reels. Test YouTube shorts later.'),
+
+    (3, 'Pricing strategy notes',
+     'Use three main tiers, with usage-based add-ons reserved for the top plans.'),
+    (3, 'Churn reduction plan',
+     'Focus on time-to-first-value, onboarding, and QBRs. Pricing changes alone are not enough.'),
+    (3, 'ARPU growth ideas',
+     'Bundle popular add-ons and experiment with annual-only plans for certain tiers.'),
+
+    (4, 'Fintech watchlist',
+     'Track BNPL startups in Thailand and monitor regulatory changes on lending caps.'),
+    (4, 'Investor talking points',
+     'Highlight CAC payback, retention via wallets, and partnerships with e-commerce platforms.'),
+    (4, 'Next research actions',
+     'Interview 3–5 fintech founders about regulatory risks and cross-sell strategies.');
