@@ -3,16 +3,29 @@
 
 INSERT INTO users (name, username, email, password_hash)
 VALUES
-    ('Kalam Iwa', 'kalam_iwa',   'kalam.iwa@example.com',   'hashed_pw_1'),
-    ('Indie Strategist', 'indie_ana', 'indie.ana@example.com',  'hashed_pw_2'),
-    ('Market Hunter',    'mark_hunt', 'mark.hunt@example.com',  'hashed_pw_3');
+    ('Kalam Iwa',          'kalam_iwa',     'kalam.iwa@example.com',      'hashed_pw_1'),
+    ('Indie Strategist',   'indie_ana',     'indie.ana@example.com',      'hashed_pw_2'),
+    ('Market Hunter',      'mark_hunt',     'mark.hunt@example.com',      'hashed_pw_3'),
+    ('Desk Research Pro',  'desk_pro',      'desk.pro@example.com',       'hashed_pw_4'),
+    ('Insight Architect',  'insight_arc',   'insight.arc@example.com',    'hashed_pw_5'),
+    ('Signal Hunter',      'signal_hunt',   'signal.hunt@example.com',    'hashed_pw_6'),
+    ('Pattern Seeker',     'pattern_seek',  'pattern.seek@example.com',   'hashed_pw_7'),
+    ('Noise Filter',       'noise_filter',  'noise.filter@example.com',   'hashed_pw_8'),
+    ('Story Crafter',      'story_craft',   'story.craft@example.com',    'hashed_pw_9'),
+    ('Retention Wizard',   'retention_wz',  'retention.wz@example.com',   'hashed_pw_10');
 
 INSERT INTO workspaces (user_id, name)
 VALUES
     (1, 'Indie Strategy Lab'),
     (1, 'Personal Learning Vault'),
     (2, 'Boutique Research Studio'),
-    (3, 'Startup Landscape Tracker');
+    (3, 'Startup Landscape Tracker'),
+    (1, 'Consumer Finance Deep Dives'),
+    (1, 'Brand Positioning Experiments'),
+    (2, 'SaaS Retention Benchmarks'),
+    (2, 'E-commerce Playbooks'),
+    (3, 'Fintech Radar APAC'),
+    (3, 'Creator Economy Tracker');
 
 INSERT INTO sources (workspace_id, title, type, content)
 VALUES
@@ -24,6 +37,10 @@ VALUES
     (1, 'Customer interviews – Gen Z in Bangkok', 'transcript',
      'Interview notes with Gen Z online shoppers about habits and pain points.'),
 
+    -- Workspace 2 (Personal Learning Vault)
+    (2, 'Personal learning sources – econ & AI', 'note',
+     'List of books, podcasts, and papers for long-term learning.'),
+
     -- Workspace 3 (Boutique Research Studio)
     (3, 'B2B SaaS pricing benchmarks Q3 2025', 'report',
      'Benchmarking of B2B SaaS pricing tiers, discounts, and value metrics.'),
@@ -32,7 +49,20 @@ VALUES
 
     -- Workspace 4 (Startup Landscape Tracker)
     (4, 'Thailand fintech investor newsletter – July 2025', 'newsletter',
-     'Curated fintech deals, funding rounds, and regulatory changes in Thailand.');
+     'Curated fintech deals, funding rounds, and regulatory changes in Thailand.'),
+
+    -- Workspace 5 (Consumer Finance Deep Dives)
+    (5, 'Consumer credit landscape – Thailand 2025', 'report',
+     'Comparison of BNPL providers, credit cards, and personal loans in Thailand.'),
+
+    -- Workspace 9 (Fintech Radar APAC)
+    (9, 'SEA fintech competitive map', 'report',
+     'Map of wallets, BNPL, and neobanks across Southeast Asia.'),
+
+    -- Workspace 10 (Creator Economy Tracker)
+    (10, 'Creator monetization trends 2025', 'report',
+     'Overview of creator revenue streams across platforms like TikTok and YouTube.');
+
 
 INSERT INTO fragments (source_id, fragment_index, text)
 VALUES
@@ -54,37 +84,44 @@ VALUES
     (3, 3, 'Loyalty is driven more by community and vibe than by pure discounts.'),
     (3, 4, 'Retention improves with fast replies to DMs and simple return policies.'),
 
-    -- Source 4: B2B SaaS pricing benchmarks Q3 2025
-    (4, 1, 'Most B2B SaaS tools use tiered pricing with 3–4 main plans.'),
-    (4, 2, 'ARPU increases when usage-based add-ons are bundled into higher tiers.'),
-    (4, 3, 'Annual contracts reduce churn compared to monthly billing.'),
-    (4, 4, 'Mid-market customers are sensitive to onboarding and support quality.'),
+    -- Source 4: Personal learning sources – econ & AI
+    (4, 1, 'Books cover topics like economics, finance, and AI.'),
+    (4, 2, 'Podcasts cover topics like business, finance, and data science.'),
+    (4, 3, 'Papers cover topics like consumer behavior, finance, and AI.'),
 
-    -- Source 5: Churn analysis – mid-market SaaS
-    (5, 1, 'Churn spikes when customers do not reach first value within 14 days.'),
-    (5, 2, 'High churn correlates with low product adoption among non-admin users.'),
-    (5, 3, 'Retention improves when customer success runs quarterly business reviews.'),
-    (5, 4, 'Pricing discounts alone rarely fix churn if product fit is weak.'),
+    -- Source 5: B2B SaaS pricing benchmarks Q3 2025
+    (5, 1, 'Most B2B SaaS tools use tiered pricing with 3–4 main plans.'),
+    (5, 2, 'ARPU increases when usage-based add-ons are bundled into higher tiers.'),
+    (5, 3, 'Annual contracts reduce churn compared to monthly billing.'),
+    (5, 4, 'Mid-market customers are sensitive to onboarding and support quality.'),
 
-    -- Source 6: Thailand fintech investor newsletter – July 2025
-    (6, 1, 'Several Thai BNPL startups raised Series A rounds in 2025.'),
-    (6, 2, 'Regulators signal stricter rules on consumer lending and interest caps.'),
-    (6, 3, 'Investors are watching customer acquisition cost and payback periods closely.'),
-    (6, 4, 'Partnerships with e-wallets help drive retention and cross-sell.');
+    -- Source 6: Churn analysis – mid-market SaaS
+    (6, 1, 'Churn spikes when customers do not reach first value within 14 days.'),
+    (6, 2, 'High churn correlates with low product adoption among non-admin users.'),
+    (6, 3, 'Retention improves when customer success runs quarterly business reviews.'),
+    (6, 4, 'Pricing discounts alone rarely fix churn if product fit is weak.'),
+
+    -- Source 7: Thailand fintech investor newsletter – July 2025
+    (7, 1, 'Several Thai BNPL startups raised Series A rounds in 2025.'),
+    (7, 2, 'Regulators signal stricter rules on consumer lending and interest caps.'),
+    (7, 3, 'Investors are watching customer acquisition cost and payback periods closely.'),
+    (7, 4, 'Partnerships with e-wallets help drive retention and cross-sell.');
 
 INSERT INTO concepts (workspace_id, name, description)
 VALUES
     -- Workspace 1 (Indie Strategy Lab)
-    (1, 'customer_segments', 'Key groups of customers based on behavior or demographics.'),
-    (1, 'conversion_rate',   'Percentage of visitors who complete the desired action.'),
-    (1, 'average_order_value', 'Average revenue per order in e-commerce.'),
-    (1, 'retention',         'How well we keep existing customers over time.'),
-    (1, 'marketing_channel', 'Where traffic and awareness come from (TikTok, IG, etc.).'),
+    (1, 'customer_segments',    'Key groups of customers based on behavior or demographics.'),
+    (1, 'conversion_rate',      'Percentage of visitors who complete the desired action.'),
+    (1, 'average_order_value',  'Average revenue per order in e-commerce.'),
+    (1, 'retention',            'How well we keep existing customers over time.'),
+    (1, 'marketing_channel',    'Where traffic and awareness come from (TikTok, IG, etc.).'),
+    (1, 'lifetime_value',       'Estimated long-term revenue from a single customer.'),
 
     -- Workspace 3 (Boutique Research Studio)
-    (3, 'pricing_model', 'How a SaaS product charges customers (tiered, usage-based, etc.).'),
-    (3, 'arpu',          'Average revenue per user or account.'),
-    (3, 'churn_rate',    'Rate at which customers cancel subscriptions.');
+    (3, 'pricing_model',        'How a SaaS product charges customers (tiered, usage-based, etc.).'),
+    (3, 'arpu',                 'Average revenue per user or account.'),
+    (3, 'churn_rate',           'Rate at which customers cancel subscriptions.'),
+    (3, 'onboarding_experience','Quality and speed of the first-time user journey.');
 
 INSERT INTO fragment_concepts (fragment_id, concept_id)
 VALUES
@@ -103,14 +140,14 @@ VALUES
     (12, 4),  -- retention via fast replies and returns
 
     -- Workspace 3: pricing model, ARPU, churn rate
-    (13, 6),  -- tiered pricing
-    (14, 7),  -- ARPU increasing with add-ons
-    (15, 8),  -- annual contracts reduce churn
-    (16, 8),  -- churn tied to onboarding/support
-    (17, 8),  -- churn spike if no first value
-    (18, 8),  -- churn and low adoption
-    (19, 8),  -- QBRs reduce churn (retention effect) -> churn_rate
-    (20, 6);  -- pricing discounts vs churn
+    (16, 7),  -- tiered pricing
+    (17, 8),  -- ARPU increasing with add-ons
+    (18, 9),  -- annual contracts reduce churn
+    (19, 9),  -- churn tied to onboarding/support
+    (20, 9),  -- churn spike if no first value
+    (21, 9),  -- churn and low adoption
+    (22, 9),  -- QBRs reduce churn (retention effect) -> churn_rate
+    (23, 7);  -- pricing discounts vs churn
 
 INSERT INTO notes (workspace_id, title, body)
 VALUES
