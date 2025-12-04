@@ -1,3 +1,0 @@
-# Modular Research Engine - Database Design Report
-
-to be filled...
