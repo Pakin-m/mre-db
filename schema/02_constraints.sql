@@ -10,6 +10,13 @@ ALTER TABLE workspaces
             REFERENCES users(id)
             ON DELETE CASCADE;
 
+-- Each workspace_files belongs to exactly one workspace.
+ALTER TABLE workspace_files
+    ADD CONSTRAINT workspaceFile_workspace_id_fk
+        FOREIGN KEY (workspace_id)
+            REFERENCES workspaces(id)
+            ON DELETE CASCADE;
+
 -- Each source belongs to one workspace.
 ALTER TABLE sources
     ADD CONSTRAINT sources_workspace_id_fk

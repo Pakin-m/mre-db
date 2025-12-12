@@ -17,11 +17,23 @@ CREATE TABLE IF NOT EXISTS workspaces (
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+CREATE TABLE workspace_files (
+    id           BIGSERIAL PRIMARY KEY,
+    workspace_id BIGINT NOT NULL,
+    file_key     TEXT NOT NULL,  -- S3 key like workspace-1/uuid-name.jpg
+    file_name    TEXT NOT NULL,  -- original filename
+    content_type TEXT,
+    size_bytes   BIGINT,
+    public_url   TEXT NOT NULL,
+    created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS sources (
     id            BIGSERIAL PRIMARY KEY,
     workspace_id  BIGINT NOT NULL,     -- FK to workspaces.id (@02_constraints.sql)
     title         TEXT NOT NULL,
     type          TEXT NOT NULL,       -- e.g. 'report', 'article', 'web_page'
+    url           TEXT,
     content       TEXT,                -- optional raw content or full text
     created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
