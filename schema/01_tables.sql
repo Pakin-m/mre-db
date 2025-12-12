@@ -23,7 +23,7 @@ CREATE TABLE workspace_files (
     file_key     TEXT NOT NULL,  -- S3 key like workspace-1/uuid-name.jpg
     file_name    TEXT NOT NULL,  -- original filename
     content_type TEXT,
-    size_bytes   BIGINT,
+    size_bytes   BIGINT NOT NULL,
     public_url   TEXT NOT NULL,
     created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
